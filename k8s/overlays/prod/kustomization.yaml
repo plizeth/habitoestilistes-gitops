@@ -21,4 +21,4 @@ patches:
 # (GitHub Actions edita esta línea con el SHA del commit)
 images:
   - name: quay.io/plizeth/habito-web
-    newTag: latest
+    newTag: ef5e309
