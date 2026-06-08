@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: habito-web
-  labels:
-    app.kubernetes.io/name: habito-web
-    app.kubernetes.io/managed-by: argocd
