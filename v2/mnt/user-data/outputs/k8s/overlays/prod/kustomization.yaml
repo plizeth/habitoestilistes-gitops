@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: habito-web
+
+# Hereda de la base
+bases:
+  - ../../base
+
+# En producción: 2 réplicas para alta disponibilidad
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+    target:
+      kind: Deployment
+      name: habito-web
+
+# La imagen se actualizará automáticamente por el pipeline CI/CD
+# (GitHub Actions edita esta línea con el SHA del commit)
+images:
+  - name: quay.io/plizeth/habito-web
+    newTag: latest

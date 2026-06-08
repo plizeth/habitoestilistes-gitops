@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js"></script>
 </head>
 <body>
 
@@ -261,7 +262,7 @@
       <p class="eyebrow">Agenda tu visita</p>
       <h2>Reservar<br><em>tu cita</em></h2>
       <p>Elige la opción que más te convenga: reserva online al instante o contáctanos por WhatsApp si tienes dudas.</p>
-      <a class="booking__whatsapp" href="https://wa.me/34XXXXXXXXX?text=Hola!%20Quiero%20reservar%20una%20cita" target="_blank">
+      <a class="booking__whatsapp" href="#" id="whatsappBooking" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Contactar por WhatsApp
       </a>
@@ -276,6 +277,9 @@
         <div class="cal__icon">📅</div>
         <h3>Reserva online</h3>
         <p>Conecta tu herramienta de reservas aquí.<br>
+<!-- Calendly badge widget begin -->
+<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/pleg-reponot?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=b8edf1&text_color=555151', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
+<!-- Calendly badge widget end -->
         Reemplaza este bloque con un iframe de <strong>Calendly</strong>, <strong>Acuity</strong> o <strong>SimplyBook</strong>.</p>
         <a href="#contacto" class="btn btn--primary">Contactar primero</a>
       </div>
@@ -378,8 +382,8 @@
       </div>
       <div class="contact__social">
         <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-        <a href="https://t.me/habito_estilistes" target="_blank">Telegram</a>
-        <a href="https://wa.me/34XXXXXXXXX" target="_blank">WhatsApp</a>
+        <a href="#" id="telegramLink" style="display:none">Telegram</a>
+        <a href="#" id="whatsappContact">WhatsApp</a>
       </div>
     </div>
     <div class="contact__map">
@@ -444,9 +448,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </form>
-  <a class="telegram" href="https://t.me/habito_estilistes" target="_blank">
-    Abrir Telegram ↗
-  </a>
+  <a class="telegram" id="chatContactLink" href="#" target="_blank">Contactar ↗</a>
 </section>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -493,5 +495,75 @@
     observer.observe(el);
   });
 </script>
+
+<script>
+// ── Carga config.json (inyectado por ConfigMap en OCP, o servido estático en local)
+fetch('/config.json')
+  .then(r => r.json())
+  .then(cfg => {
+    // WhatsApp — booking section
+    const waBooking = document.getElementById('whatsappBooking');
+    if (waBooking && cfg.whatsapp) {
+      const msg = encodeURIComponent(cfg.whatsappMessage || 'Hola! Quiero reservar una cita');
+      waBooking.href = `https://wa.me/${cfg.whatsapp}?text=${msg}`;
+    }
+
+    // WhatsApp — contacto social
+    const waContact = document.getElementById('whatsappContact');
+    if (waContact && cfg.whatsapp) {
+      const msg = encodeURIComponent(cfg.whatsappMessage || '');
+      waContact.href = `https://wa.me/${cfg.whatsapp}?text=${msg}`;
+      waContact.style.display = '';
+    }
+
+    // Link de contacto en el chat (WhatsApp preferido, Telegram como fallback)
+    const chatLink = document.getElementById('chatContactLink');
+    if (chatLink) {
+      if (cfg.whatsapp) {
+        const msg = encodeURIComponent(cfg.whatsappMessage || '');
+        chatLink.href = `https://wa.me/${cfg.whatsapp}?text=${msg}`;
+        chatLink.textContent = 'WhatsApp ↗';
+      } else if (cfg.telegram) {
+        chatLink.href = cfg.telegram;
+        chatLink.textContent = 'Telegram ↗';
+      } else {
+        chatLink.style.display = 'none';
+      }
+    }
+
+    // Telegram — solo si está configurado
+    const telegramLink = document.getElementById('telegramLink');
+    if (telegramLink && cfg.telegram) {
+      telegramLink.href = cfg.telegram;
+      telegramLink.style.display = '';
+    }
+
+    // Instagram
+    document.querySelectorAll('a[href*="instagram.com"]').forEach(a => {
+      if (cfg.instagram) a.href = cfg.instagram;
+    });
+
+    // Email
+    document.querySelectorAll('a[href*="hola@habito"]').forEach(a => {
+      if (cfg.email) {
+        a.href = `mailto:${cfg.email}`;
+        a.textContent = cfg.email;
+      }
+    });
+
+    // Teléfono
+    document.querySelectorAll('a[href*="tel:"]').forEach(a => {
+      if (cfg.phone) {
+        a.href = `tel:${cfg.phone.replace(/\s/g,'')}`;
+        a.textContent = cfg.phone;
+      }
+    });
+  })
+  .catch(() => {
+    // Si no hay config.json (desarrollo sin ConfigMap), no rompe nada
+    console.info('[habito] config.json no disponible, usando valores por defecto del HTML');
+  });
+</script>
+
 </body>
 </html>

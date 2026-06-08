@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: habito-config
+  namespace: habito-web
+data:
+  config.json: |
+    {
+      "whatsapp": "34XXXXXXXXX",
+      "whatsappMessage": "Hola! Quiero reservar una cita en Hábito Estilistes",
+      "phone": "+34 XXX XXX XXX",
+      "email": "hola@habitoestilistes.com",
+      "address": "Carrer de exemple 12, 08860 Castelldefels",
+      "instagram": "https://www.instagram.com/habitoestilistes",
+      "telegram": "",
+      "calendly": ""
+    }
