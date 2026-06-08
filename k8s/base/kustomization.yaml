@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: habito-web
 
 resources:
-  - namespace.yaml
   - deployment.yaml
   - service-route.yaml
   - configmap.yaml

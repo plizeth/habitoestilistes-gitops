@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: habito-web
 
 # Hereda de la base
-bases:
+resources:
   - ../../base
 
 # En producción: 2 réplicas para alta disponibilidad
