@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: quay.io
-  IMAGE_NAME: plizeth/habito-web
+  IMAGE_NAME: pescorza/habito-web
 
 jobs:
   build-and-push:
