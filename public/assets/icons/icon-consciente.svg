@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <style>
+    .heart      { transform-origin: 40px 42px; animation: heartbeat 1.8s ease-in-out infinite; }
+    .wave1      { animation: wave 2.5s ease-in-out infinite; }
+    .wave2      { animation: wave 2.5s ease-in-out 0.5s infinite; }
+    .wave3      { animation: wave 2.5s ease-in-out 1s infinite; }
+    .sparkle-a  { animation: twinkle 2s ease-in-out infinite; }
+    .sparkle-b  { animation: twinkle 2s ease-in-out 0.7s infinite; }
+    .sparkle-c  { animation: twinkle 2s ease-in-out 1.4s infinite; }
+    .glow-bg    { animation: bgpulse 1.8s ease-in-out infinite; }
+    @keyframes heartbeat {
+      0%,100%   { transform: scale(1); }
+      14%        { transform: scale(1.15); }
+      28%        { transform: scale(1); }
+      42%        { transform: scale(1.08); }
+      70%        { transform: scale(1); }
+    }
+    @keyframes wave {
+      0%   { opacity: 0; transform: scale(.5); }
+      50%  { opacity: .4; }
+      100% { opacity: 0; transform: scale(1.6); }
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0; transform: scale(.5) rotate(0deg); }
+      50%      { opacity: 1; transform: scale(1) rotate(20deg); }
+    }
+    @keyframes bgpulse {
+      0%,100% { opacity: .12; }
+      50%      { opacity: .22; }
+    }
+  </style>
+
+  <!-- Halo de fondo -->
+  <circle class="glow-bg" cx="40" cy="40" r="34" fill="#dd5148"/>
+
+  <!-- Ondas de latido -->
+  <circle class="wave1" cx="40" cy="42" r="18" stroke="#dd5148" stroke-width="2"/>
+  <circle class="wave2" cx="40" cy="42" r="18" stroke="#f0d0ce" stroke-width="1.5"/>
+  <circle class="wave3" cx="40" cy="42" r="18" stroke="#dd5148" stroke-width="1"/>
+
+  <!-- Corazón principal -->
+  <g class="heart">
+    <path d="M40 54 C40 54 22 44 22 32 C22 25 27 20 33 20 C36.5 20 39 22 40 24 C41 22 43.5 20 47 20 C53 20 58 25 58 32 C58 44 40 54 40 54Z"
+          fill="#dd5148"/>
+    <!-- brillo interno -->
+    <path d="M30 26 C28 29 28 33 30 36" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+  </g>
+
+  <!-- Destellos pequeños -->
+  <g class="sparkle-a" transform="translate(18,22)">
+    <line x1="0" y1="-5" x2="0" y2="5"  stroke="#f0d0ce" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="-5" y1="0" x2="5" y2="0"  stroke="#f0d0ce" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <g class="sparkle-b" transform="translate(61,28)">
+    <line x1="0" y1="-4" x2="0" y2="4"  stroke="#8cc9d3" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="-4" y1="0" x2="4" y2="0"  stroke="#8cc9d3" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <g class="sparkle-c" transform="translate(55,58)">
+    <line x1="0" y1="-3.5" x2="0" y2="3.5" stroke="#f0d0ce" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="-3.5" y1="0" x2="3.5" y2="0" stroke="#f0d0ce" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+</svg>

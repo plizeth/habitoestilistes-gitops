@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <style>
+    .spark1 { animation: spark 2.4s ease-in-out infinite; transform-origin: 40px 40px; }
+    .spark2 { animation: spark 2.4s ease-in-out 0.4s infinite; transform-origin: 40px 40px; }
+    .spark3 { animation: spark 2.4s ease-in-out 0.8s infinite; transform-origin: 40px 40px; }
+    .spark4 { animation: spark 2.4s ease-in-out 1.2s infinite; transform-origin: 40px 40px; }
+    .core   { animation: glow 2.4s ease-in-out infinite; }
+    .tube   { animation: shimmer 2.4s ease-in-out infinite; }
+    .bubble { animation: rise 3s ease-in-out infinite; }
+    .bubble2{ animation: rise 3s ease-in-out 1s infinite; }
+    .glow-bg{ animation: bgpulse 2.4s ease-in-out infinite; }
+    @keyframes spark {
+      0%,100% { opacity: 0; transform: scale(.6); }
+      40%,60% { opacity: 1; transform: scale(1.1); }
+    }
+    @keyframes glow {
+      0%,100% { fill: #8cc9d3; }
+      50%      { fill: #5faeb9; }
+    }
+    @keyframes shimmer {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .75; }
+    }
+    @keyframes rise {
+      0%   { opacity: 0; transform: translateY(0); }
+      30%  { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes bgpulse {
+      0%,100% { opacity: .12; }
+      50%      { opacity: .25; }
+    }
+  </style>
+
+  <!-- Halo -->
+  <circle class="glow-bg" cx="40" cy="40" r="34" fill="#8cc9d3"/>
+
+  <!-- Tubo de ensayo -->
+  <g class="tube">
+    <rect x="34" y="18" width="12" height="28" rx="2" fill="#c5e5ea"/>
+    <rect x="34" y="36" width="12" height="10" rx="0 0 2 2" fill="#8cc9d3" opacity=".8"/>
+    <!-- tapa -->
+    <rect x="32" y="16" width="16" height="4" rx="2" fill="#5faeb9"/>
+    <!-- línea lateral -->
+    <line x1="37" y1="20" x2="37" y2="42" stroke="white" stroke-width=".8" opacity=".5"/>
+  </g>
+
+  <!-- Burbujas -->
+  <circle class="bubble"  cx="38" cy="40" r="1.5" fill="white" opacity=".7"/>
+  <circle class="bubble2" cx="42" cy="43" r="1"   fill="white" opacity=".6"/>
+
+  <!-- Destellos en las 4 diagonales -->
+  <!-- ↗ -->
+  <g class="spark1">
+    <path d="M52 22 L54 18 L56 22 L52 22Z" fill="#dd5148"/>
+    <line x1="54" y1="18" x2="54" y2="14" stroke="#dd5148" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <!-- ↙ -->
+  <g class="spark2">
+    <path d="M26 54 L24 58 L28 56Z" fill="#8cc9d3"/>
+    <line x1="25" y1="57" x2="22" y2="60" stroke="#8cc9d3" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+  <!-- ↘ -->
+  <g class="spark3">
+    <path d="M55 55 L57 59 L53 57Z" fill="#c5e5ea"/>
+    <line x1="56" y1="58" x2="58" y2="62" stroke="#c5e5ea" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+  <!-- estrella pequeña lateral -->
+  <g class="spark4">
+    <line x1="62" y1="36" x2="68" y2="36" stroke="#dd5148" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="65" y1="33" x2="65" y2="39" stroke="#dd5148" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="63" y1="34" x2="67" y2="38" stroke="#dd5148" stroke-width="1" stroke-linecap="round"/>
+    <line x1="67" y1="34" x2="63" y2="38" stroke="#dd5148" stroke-width="1" stroke-linecap="round"/>
+  </g>
+
+  <!-- Punto brillante central -->
+  <circle class="core" cx="40" cy="50" r="3" opacity=".9"/>
+</svg>

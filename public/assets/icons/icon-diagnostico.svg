@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <style>
+    .ring1 { animation: expand 3s ease-out infinite; transform-origin: 40px 40px; }
+    .ring2 { animation: expand 3s ease-out 0.7s infinite; transform-origin: 40px 40px; }
+    .ring3 { animation: expand 3s ease-out 1.4s infinite; transform-origin: 40px 40px; }
+    .dot   { animation: dotpulse 3s ease-in-out infinite; }
+    .tick  { stroke-dasharray: 14; stroke-dashoffset: 14; animation: draw 0.6s ease-out 0.4s forwards; }
+    .scan  { animation: scanline 2.5s ease-in-out infinite; }
+    @keyframes expand {
+      0%   { transform: scale(.3); opacity: .8; }
+      100% { transform: scale(1.3); opacity: 0; }
+    }
+    @keyframes dotpulse {
+      0%,100% { r: 6; }
+      50%      { r: 7.5; }
+    }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes scanline {
+      0%,100% { transform: translateY(-8px); opacity: 0; }
+      30%,70% { opacity: .6; }
+      50%     { transform: translateY(8px); }
+    }
+  </style>
+
+  <!-- Anillos expansivos -->
+  <circle class="ring1" cx="40" cy="40" r="26" stroke="#8cc9d3" stroke-width="1.5" opacity=".6"/>
+  <circle class="ring2" cx="40" cy="40" r="26" stroke="#8cc9d3" stroke-width="1"   opacity=".4"/>
+  <circle class="ring3" cx="40" cy="40" r="26" stroke="#c5e5ea" stroke-width=".8"  opacity=".3"/>
+
+  <!-- Círculo base -->
+  <circle cx="40" cy="40" r="20" stroke="#5faeb9" stroke-width="2" opacity=".3"/>
+  <circle cx="40" cy="40" r="13" stroke="#5faeb9" stroke-width="1.5" opacity=".5"/>
+
+  <!-- Punto central pulsante -->
+  <circle class="dot" cx="40" cy="40" r="6" fill="#8cc9d3"/>
+  <circle cx="40" cy="40" r="3" fill="white" opacity=".8"/>
+
+  <!-- Línea de escaneo -->
+  <line class="scan" x1="20" y1="40" x2="60" y2="40" stroke="#dd5148" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+
+  <!-- Cruz de mira (cuadrantes) -->
+  <line x1="40" y1="18" x2="40" y2="26" stroke="#5faeb9" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+  <line x1="40" y1="54" x2="40" y2="62" stroke="#5faeb9" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+  <line x1="18" y1="40" x2="26" y2="40" stroke="#5faeb9" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+  <line x1="54" y1="40" x2="62" y2="40" stroke="#5faeb9" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+
+  <!-- Tick de confirmación -->
+  <path class="tick" d="M33 40 L38 45 L47 35" stroke="#dd5148" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
