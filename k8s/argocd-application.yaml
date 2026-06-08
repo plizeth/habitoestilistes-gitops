@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: habito-web
-  namespace: openshift-gitops
+  namespace: gitops-app
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://github.com/plizeth/habitoestilistes-gitops.git
-    targetRevision: main
+    targetRevision: v2-cm
     path: k8s/overlays/prod    # usa el overlay de producción
 
   destination:
@@ -22,5 +22,4 @@ spec:
       prune: true       # borra recursos eliminados de Git
       selfHeal: true    # revierte cambios manuales en OCP
     syncOptions:
-      - CreateNamespace=true
       - ServerSideApply=true

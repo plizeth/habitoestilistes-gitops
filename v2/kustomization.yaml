@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: habito-web
 
 resources:
-  - namespace.yaml
   - configmap.yaml
   - deployment.yaml
   - service-route.yaml
+  # namespace.yaml eliminado — ArgoCD lo gestiona con CreateNamespace=true

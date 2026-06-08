@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/plizeth/habitoestilistes-gitops.git
     targetRevision: main
-    path: k8s/overlays/prod    # usa el overlay de producción
+    path: k8s/overlays/prod
 
   destination:
     server: https://kubernetes.default.svc
@@ -19,8 +19,13 @@ spec:
 
   syncPolicy:
     automated:
-      prune: true       # borra recursos eliminados de Git
-      selfHeal: true    # revierte cambios manuales en OCP
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+      # ← Esto le dice a ArgoCD que no falle si el namespace ya existe
+      - SkipDryRunOnMissingResource=true
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: openshift-gitops
