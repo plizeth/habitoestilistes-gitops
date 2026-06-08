@@ -2,9 +2,9 @@ name: Build & Push con Podman → Quay.io
 
 on:
   push:
-    branches: [v2-cm]
+    branches: [main]
   pull_request:
-    branches: [v2-cm]
+    branches: [main]
   workflow_dispatch:   # permite lanzar manualmente desde GitHub
 
 env:
