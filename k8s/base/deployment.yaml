@@ -28,7 +28,7 @@ spec:
         - name: habito-web
           # ⚠️  Actualiza con tu imagen en Quay.io tras el primer push:
           # quay.io/plizeth/habito-web:latest
-          image: quay.io/plizeth/habito-web:latest
+          image: quay.io/pescorza/habito-web:latest
           imagePullPolicy: Always
           ports:
             - name: http
