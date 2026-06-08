@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hábito Estilistes | Diseño de Color · Castelldefels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<header class="nav" id="nav">
+  <a href="/" class="nav__logo">
+    <img src="/assets/logo-current.png" alt="Hábito Estilistes">
+  </a>
+  <nav class="nav__links">
+    <a href="#servicios">Servicios</a>
+    <a href="#colorimetria">Colorimetría</a>
+    <a href="#blog">Blog</a>
+    <a href="#nosotras">Nosotras</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn--nav" href="#reservar">Reservar cita</a>
+  <button class="nav__burger" id="navBurger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="nav__mobile" id="navMobile">
+  <a href="#servicios" class="nav__mobile-link">Servicios</a>
+  <a href="#colorimetria" class="nav__mobile-link">Colorimetría</a>
+  <a href="#blog" class="nav__mobile-link">Blog</a>
+  <a href="#nosotras" class="nav__mobile-link">Nosotras</a>
+  <a href="#contacto" class="nav__mobile-link">Contacto</a>
+  <a href="#reservar" class="btn nav__mobile-cta">Reservar cita</a>
+</div>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero__content">
+    <p class="eyebrow">Castelldefels · Barcelona</p>
+    <h1 class="hero__title">
+      El color<br>
+      <em>que te<br>pertenece</em>
+    </h1>
+    <p class="hero__sub">Diseñamos tonos únicos que realzan tu esencia, cuidan tu cabello y respetan el planeta.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#reservar">Reservar cita</a>
+      <a class="btn btn--ghost" href="#colorimetria">Nuestra especialidad</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <div class="hero__img-wrap">
+      <img src="/assets/hair-1.png" alt="Diseño de color en Hábito Estilistes">
+      <div class="hero__badge">
+        <span class="badge__top">Belleza</span>
+        <span class="badge__mid">consciente</span>
+        <span class="badge__bot">cuidado real</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll-hint">↓</div>
+</section>
+
+<!-- ═══════════════════════════ VALORES ═══════════════════════════ -->
+<section class="pillars">
+  <div class="pillars__grid">
+    <div class="pillar">
+      <div class="pillar__icon">🍃</div>
+      <strong>Productos sostenibles</strong>
+      <p>Marcas que cuidan el cabello y el medio ambiente.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar__icon">⚗️</div>
+      <strong>Técnicas avanzadas</strong>
+      <p>Formación continua en las últimas tendencias de color.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar__icon">◎</div>
+      <strong>Diagnóstico personalizado</strong>
+      <p>Cada cliente merece un análisis de color único.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar__icon">♡</div>
+      <strong>Ambiente consciente</strong>
+      <p>Un espacio donde sentirte bien, por dentro y por fuera.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ COLORIMETRÍA ═══════════════════════════ -->
+<section class="colorimetria" id="colorimetria">
+  <div class="colorimetria__inner">
+    <div class="colorimetria__text">
+      <p class="eyebrow">Nuestra especialidad</p>
+      <h2>Colorimetría<br><em>con propósito</em></h2>
+      <p>Entendemos el color como ciencia y arte. Analizamos la tonalidad natural de tu cabello, tu piel y tus ojos para diseñar un color armónico que te haga brillar.</p>
+      <p>Trabajamos con técnicas como <strong>balayage, babylights, técnica californiana, corrección de color</strong> y color fantasía usando productos de alta gama y baja agresión.</p>
+      <a class="link-arrow" href="#servicios">Ver todos los servicios →</a>
+    </div>
+    <div class="colorimetria__gallery">
+      <div class="cgal__item cgal--tall">
+        <img src="/assets/hair-2.jpeg" alt="Mechas balayage">
+        <span>Balayage natural</span>
+      </div>
+      <div class="cgal__item">
+        <img src="/assets/hair-3.jpeg" alt="Color fantasía">
+        <span>Color fantasía</span>
+      </div>
+      <div class="cgal__item">
+        <img src="/assets/hair-6.jpeg" alt="Corrección de color">
+        <span>Corrección de color</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SERVICIOS ═══════════════════════════ -->
+<section class="services" id="servicios">
+  <div class="services__header">
+    <p class="eyebrow">Lo que hacemos</p>
+    <h2>Servicios a medida</h2>
+    <p class="services__sub">Cada tratamiento empieza con una consulta para entender lo que necesitas.</p>
+  </div>
+
+  <!-- FILTROS DE CATEGORÍA -->
+  <div class="services__filters" role="tablist">
+    <button class="filter active" data-filter="color" role="tab" aria-selected="true">Color</button>
+    <button class="filter" data-filter="corte" role="tab">Corte & Forma</button>
+    <button class="filter" data-filter="tratamiento" role="tab">Tratamientos</button>
+    <button class="filter" data-filter="novia" role="tab">Novia & Evento</button>
+  </div>
+
+  <!-- GRID DE SERVICIOS — fácil de actualizar: añade/quita <article> -->
+  <div class="services__grid" id="servicesGrid">
+
+    <!-- ── COLOR ── -->
+    <article class="service-card" data-cat="color">
+      <div class="sc__img"><img src="/assets/hair-1.png" alt="Balayage"></div>
+      <div class="sc__body">
+        <h3>Balayage / Babylights</h3>
+        <p>Color degradado y luminoso, pintado a mano para un resultado completamente natural.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Desde 85€</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-card" data-cat="color">
+      <div class="sc__img"><img src="/assets/hair-2.jpeg" alt="Mechas"></div>
+      <div class="sc__body">
+        <h3>Mechas & Highlights</h3>
+        <p>Mechones de luz estratégicamente colocados para aportar dimensión y movimiento.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Desde 70€</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-card" data-cat="color">
+      <div class="sc__img"><img src="/assets/hair-3.jpeg" alt="Color fantasía"></div>
+      <div class="sc__body">
+        <h3>Color Fantasía</h3>
+        <p>Tonos vibrantes, pastel o intensos. Expresión y personalidad sin límites.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Consultar</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-card" data-cat="color">
+      <div class="sc__img"><img src="/assets/hair-6.jpeg" alt="Corrección de color"></div>
+      <div class="sc__body">
+        <h3>Corrección de Color</h3>
+        <p>¿Color anterior que no te convence? Lo estudiamos y lo corregimos con cuidado.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Consultar</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── CORTE ── -->
+    <article class="service-card" data-cat="corte" style="display:none">
+      <div class="sc__img"><img src="/assets/hair-4.png" alt="Corte"></div>
+      <div class="sc__body">
+        <h3>Corte & Acabado</h3>
+        <p>Corte personalizado según tu tipo de cabello, rostro y estilo de vida.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Desde 35€</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="service-card" data-cat="corte" style="display:none">
+      <div class="sc__img"><img src="/assets/hair-5.png" alt="Peinado"></div>
+      <div class="sc__body">
+        <h3>Peinado & Styling</h3>
+        <p>Ondas, liso perfecto o recogidos. Acabados profesionales para cada ocasión.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Desde 30€</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── TRATAMIENTO ── -->
+    <article class="service-card" data-cat="tratamiento" style="display:none">
+      <div class="sc__img"><img src="/assets/hair-4.png" alt="Tratamiento capilar"></div>
+      <div class="sc__body">
+        <h3>Tratamiento Capilar</h3>
+        <p>Mascarillas, queratina, hidratación profunda. Tu cabello más sano y brillante.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Desde 45€</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── NOVIA ── -->
+    <article class="service-card" data-cat="novia" style="display:none">
+      <div class="sc__img"><img src="/assets/hair-5.png" alt="Peinado de novia"></div>
+      <div class="sc__body">
+        <h3>Peinado de Novia</h3>
+        <p>Prueba previa incluida. Peinados que duran toda la noche y te hacen sentir única.</p>
+        <div class="sc__footer">
+          <span class="sc__price">Consultar</span>
+          <a href="#reservar" class="btn btn--sm">Reservar</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ GALERÍA ═══════════════════════════ -->
+<section class="gallery">
+  <p class="eyebrow" style="text-align:center;padding-top:1rem">Transformaciones reales</p>
+  <h2 style="text-align:center;margin-bottom:2rem">Nuestro trabajo</h2>
+  <div class="gallery__strip">
+    <img src="/assets/hair-1.png" alt="">
+    <img src="/assets/hair-2.jpeg" alt="">
+    <img src="/assets/hair-3.jpeg" alt="">
+    <img src="/assets/hair-4.png" alt="">
+    <img src="/assets/hair-5.png" alt="">
+    <img src="/assets/hair-6.jpeg" alt="">
+  </div>
+</section>
+
+<!-- ═══════════════════════════ RESERVAR ═══════════════════════════ -->
+<section class="booking" id="reservar">
+  <div class="booking__inner">
+    <div class="booking__text">
+      <p class="eyebrow">Agenda tu visita</p>
+      <h2>Reservar<br><em>tu cita</em></h2>
+      <p>Elige la opción que más te convenga: reserva online al instante o contáctanos por WhatsApp si tienes dudas.</p>
+      <a class="booking__whatsapp" href="https://wa.me/34XXXXXXXXX?text=Hola!%20Quiero%20reservar%20una%20cita" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Contactar por WhatsApp
+      </a>
+    </div>
+    <div class="booking__cal">
+      <!-- CALENDARIO: reemplaza este iframe con tu herramienta de reservas -->
+      <!-- Opciones: Acuity, Calendly, SimplyBook, Google Calendar -->
+      <!-- Ejemplo con Calendly: -->
+      <!-- <iframe src="https://calendly.com/TU_USUARIO" width="100%" height="580" frameborder="0"></iframe> -->
+
+      <div class="cal__placeholder">
+        <div class="cal__icon">📅</div>
+        <h3>Reserva online</h3>
+        <p>Conecta tu herramienta de reservas aquí.<br>
+        Reemplaza este bloque con un iframe de <strong>Calendly</strong>, <strong>Acuity</strong> o <strong>SimplyBook</strong>.</p>
+        <a href="#contacto" class="btn btn--primary">Contactar primero</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ NOSOTRAS ═══════════════════════════ -->
+<section class="about" id="nosotras">
+  <div class="about__img">
+    <img src="/assets/owner.png" alt="Equipo Hábito Estilistes">
+  </div>
+  <div class="about__text">
+    <p class="eyebrow">Sobre nosotras</p>
+    <h2>Pasión y cuidado<br><em>en cada detalle</em></h2>
+    <p>Somos un equipo apasionado por el color, la formación constante y el bienestar capilar. Creemos en una belleza consciente, sostenible y auténtica.</p>
+    <p>Nos formamos continuamente con las mejores marcas y técnicas del sector para ofrecerte siempre lo mejor.</p>
+    <div class="about__stats">
+      <div class="stat"><strong>+8</strong><span>años de experiencia</span></div>
+      <div class="stat"><strong>500+</strong><span>clientas satisfechas</span></div>
+      <div class="stat"><strong>100%</strong><span>productos sostenibles</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BLOG ═══════════════════════════ -->
+<section class="blog" id="blog">
+  <div class="blog__header">
+    <div>
+      <p class="eyebrow">Consejos & tendencias</p>
+      <h2>El blog de Hábito</h2>
+    </div>
+    <a href="/blog" class="link-arrow">Ver todos los artículos →</a>
+  </div>
+
+  <!-- POSTS DE BLOG — añade o edita estos <article> para actualizar el blog -->
+  <div class="blog__grid">
+
+    <article class="blog-card blog-card--featured">
+      <div class="bc__img">
+        <img src="/assets/hair-2.jpeg" alt="Guía de colorimetría">
+        <span class="bc__tag">Colorimetría</span>
+      </div>
+      <div class="bc__body">
+        <time class="bc__date">Junio 2025</time>
+        <h3><a href="/blog/guia-colorimetria-estacional">Guía completa de colorimetría estacional: encuentra tus tonos perfectos</a></h3>
+        <p>Descubre cómo el análisis del color de tu piel, ojos y cabello natural puede transformar tu imagen con los tonos que verdaderamente te favorecen.</p>
+        <a class="link-arrow" href="/blog/guia-colorimetria-estacional">Leer artículo →</a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="bc__img">
+        <img src="/assets/hair-1.png" alt="Balayage vs mechas">
+        <span class="bc__tag">Técnicas</span>
+      </div>
+      <div class="bc__body">
+        <time class="bc__date">Mayo 2025</time>
+        <h3><a href="/blog/balayage-vs-mechas">Balayage vs mechas: ¿cuál es la diferencia y cuál te conviene?</a></h3>
+        <a class="link-arrow" href="/blog/balayage-vs-mechas">Leer artículo →</a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="bc__img">
+        <img src="/assets/hair-3.jpeg" alt="Cuidado del color">
+        <span class="bc__tag">Cuidados</span>
+      </div>
+      <div class="bc__body">
+        <time class="bc__date">Abril 2025</time>
+        <h3><a href="/blog/cuidado-color-en-casa">Cómo mantener tu color en casa: los 5 básicos que marcan la diferencia</a></h3>
+        <a class="link-arrow" href="/blog/cuidado-color-en-casa">Leer artículo →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CONTACTO ═══════════════════════════ -->
+<section class="contact" id="contacto">
+  <div class="contact__inner">
+    <div class="contact__info">
+      <p class="eyebrow">Encuéntranos</p>
+      <h2>Contacto</h2>
+      <div class="contact__detail">
+        <strong>📍 Dirección</strong>
+        <p>Carrer de exemple 12<br>08860 Castelldefels, Barcelona</p>
+      </div>
+      <div class="contact__detail">
+        <strong>🕐 Horarios</strong>
+        <p>Lunes — Viernes: 9:00 – 20:00<br>Sábado: 9:00 – 18:00<br>Domingo: Cerrado</p>
+      </div>
+      <div class="contact__detail">
+        <strong>📞 Teléfono & WhatsApp</strong>
+        <p><a href="tel:+34XXXXXXXXX">+34 XXX XXX XXX</a></p>
+      </div>
+      <div class="contact__detail">
+        <strong>📧 Email</strong>
+        <p><a href="mailto:hola@habitoestilistes.com">hola@habitoestilistes.com</a></p>
+      </div>
+      <div class="contact__social">
+        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        <a href="https://t.me/habito_estilistes" target="_blank">Telegram</a>
+        <a href="https://wa.me/34XXXXXXXXX" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    <div class="contact__map">
+      <!-- Reemplaza con tu iframe de Google Maps -->
+      <div class="map__placeholder">
+        <p>📍 Mapa de Google Maps</p>
+        <p style="font-size:.85rem;opacity:.7">Pega aquí un iframe de Google Maps con tu dirección</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="/assets/logo-current.png" alt="Hábito Estilistes" style="height:50px;filter:brightness(0)invert(1)">
+      <p>Diseño de color consciente<br>en Castelldefels, Barcelona.</p>
+    </div>
+    <div class="footer__links">
+      <strong>Servicios</strong>
+      <a href="#servicios">Colorimetría</a>
+      <a href="#servicios">Balayage & Mechas</a>
+      <a href="#servicios">Corte & Styling</a>
+      <a href="#servicios">Tratamientos</a>
+    </div>
+    <div class="footer__links">
+      <strong>Hábito</strong>
+      <a href="#nosotras">Sobre nosotras</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/aviso-legal">Aviso legal</a>
+    </div>
+    <div class="footer__cta">
+      <strong>¿Lista para cambiar?</strong>
+      <p>Reserva tu cita y empieza tu transformación.</p>
+      <a class="btn btn--primary" href="#reservar">Reservar cita</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 Hábito Estilistes · Castelldefels</span>
+    <span>Hecho con 🤍 en Barcelona</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ CHAT ═══════════════════════════ -->
+<button id="chatToggle" class="chatToggle" aria-label="Abrir chat">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+<section id="chatBox" class="chatBox">
+  <header>
+    <span>💬 Chat Hábito</span>
+    <button id="chatClose">×</button>
+  </header>
+  <div id="messages" class="messages">
+    <p class="hint">Hola 👋 ¿En qué podemos ayudarte hoy?</p>
+  </div>
+  <form id="chatForm">
+    <input id="name" placeholder="Tu nombre" autocomplete="name">
+    <input id="text" placeholder="Escribe tu mensaje..." autocomplete="off">
+    <button type="submit">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+  <a class="telegram" href="https://t.me/habito_estilistes" target="_blank">
+    Abrir Telegram ↗
+  </a>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/chat.js"></script>
+<script>
+  // ── Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Mobile menu
+  const burger = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('navMobile');
+  burger.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    burger.classList.toggle('active');
+  });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    burger.classList.remove('active');
+  }));
+
+  // ── Servicios filter
+  const filters = document.querySelectorAll('.filter');
+  const cards = document.querySelectorAll('.service-card');
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      const cat = btn.dataset.filter;
+      cards.forEach(c => {
+        c.style.display = c.dataset.cat === cat ? '' : 'none';
+      });
+    });
+  });
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.service-card, .blog-card, .pillar, .stat').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "habito-estilistes-web",
+  "version": "2.0.0",
+  "description": "Web de la peluquería Hábito Estilistes — Castelldefels",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

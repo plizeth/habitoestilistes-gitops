@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habito-web
+  namespace: habito-web
+  labels:
+    app: habito-web
+    app.kubernetes.io/name: habito-web
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/managed-by: argocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habito-web
+  template:
+    metadata:
+      labels:
+        app: habito-web
+        version: latest
+    spec:
+      # ── Seguridad OpenShift: sin root, sin escalado de privilegios
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: habito-web
+          # ⚠️  Actualiza con tu imagen en Quay.io tras el primer push:
+          # quay.io/plizeth/habito-web:latest
+          image: quay.io/plizeth/habito-web:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: NODE_ENV
+              value: "production"
+            - name: MERGE_DELAY_MS
+              value: "3500"
+            # N8N_WEBHOOK_URL se inyecta desde un Secret (no en este yaml)
+            - name: N8N_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: habito-secrets
+                  key: n8n-webhook-url
+                  optional: true   # la app arranca aunque no exista el secret
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          # Liveness: OpenShift mata el pod si falla repetidamente
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
+          # Readiness: OpenShift no manda tráfico hasta que pase
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: false   # Node.js necesita escribir /tmp

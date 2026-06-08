@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Chat | Hábito</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin">
+  <main class="adminPanel">
+    <h1>Chat live — Hábito</h1>
+    <p>Abre la web en otra pestaña y responde desde aquí.</p>
+    <div id="adminMessages" class="messages adminMessages"></div>
+    <form id="adminForm">
+      <input id="clientId" placeholder="clientId (se rellena automático al recibir mensaje)">
+      <input id="adminText" placeholder="Respuesta para el cliente">
+      <button type="submit">Responder</button>
+    </form>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/admin.js"></script>
+</body>
+</html>

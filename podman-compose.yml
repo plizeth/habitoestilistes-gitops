@@ -1,0 +1,31 @@
+version: '3.9'
+
+# ── Uso:
+#   podman-compose up       # arrancar
+#   podman-compose down     # parar
+#   podman-compose build    # reconstruir imagen
+#
+# Instalar podman-compose: pip3 install podman-compose
+# O usar: podman play kube (con manifiestos YAML)
+
+services:
+  habito-web:
+    build:
+      context: .
+      containerfile: Containerfile   # Podman busca Containerfile por defecto
+    image: localhost/habito-web:dev
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      NODE_ENV: development
+      N8N_WEBHOOK_URL: "${N8N_WEBHOOK_URL:-}"
+      MERGE_DELAY_MS: "3500"
+    volumes:
+      # Monta código fuente en desarrollo para ver cambios sin rebuild
+      - ./server.js:/app/server.js:ro,z
+      - ./public:/app/public:ro,z
+    restart: unless-stopped
+    # Seguridad Podman: sin privilegios extra
+    security_opt:
+      - no-new-privileges:true

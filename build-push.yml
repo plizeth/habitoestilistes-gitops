@@ -1,0 +1,80 @@
+name: Build & Push con Podman → Quay.io
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:   # permite lanzar manualmente desde GitHub
+
+env:
+  REGISTRY: quay.io
+  IMAGE_NAME: plizeth/habito-web
+
+jobs:
+  build-and-push:
+    name: Build con Podman y push a Quay.io
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      # Instalar Podman en el runner de GitHub Actions
+      - name: Instalar Podman
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y podman
+          podman version
+
+      # Login en Quay.io usando Podman (misma sintaxis que Docker)
+      - name: Login en Quay.io
+        run: |
+          echo "${{ secrets.QUAY_PASSWORD }}" | \
+          podman login quay.io \
+            --username "${{ secrets.QUAY_USERNAME }}" \
+            --password-stdin
+
+      # Calcular el tag: SHA corto del commit
+      - name: Calcular imagen tag
+        id: tag
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "short_sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "image_latest=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_OUTPUT
+
+      # Podman build usando Containerfile (nombre nativo de Podman/Buildah)
+      - name: Build imagen con Podman
+        run: |
+          podman build \
+            --file Containerfile \
+            --tag "${{ steps.tag.outputs.image }}" \
+            --tag "${{ steps.tag.outputs.image_latest }}" \
+            --label "org.opencontainers.image.revision=${{ github.sha }}" \
+            --label "org.opencontainers.image.created=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            .
+
+      # Push solo en pushes a main (no en PRs)
+      - name: Push a Quay.io
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          podman push "${{ steps.tag.outputs.image }}"
+          podman push "${{ steps.tag.outputs.image_latest }}"
+
+      # ── GitOps: actualiza el manifiesto con el nuevo SHA
+      # ArgoCD detectará el cambio y desplegará automáticamente
+      - name: Actualizar imagen en manifiesto Kustomize
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          sed -i "s|newTag:.*|newTag: ${{ steps.tag.outputs.short_sha }}|" \
+            k8s/overlays/prod/kustomization.yaml
+
+      - name: Commit manifiesto actualizado → activa ArgoCD
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: imagen actualizada a ${{ steps.tag.outputs.short_sha }} [skip ci]"
+          file_pattern: k8s/overlays/prod/kustomization.yaml
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"

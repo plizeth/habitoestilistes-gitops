@@ -1,0 +1,44 @@
+---
+# ── Service: expone el pod dentro del cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: habito-web
+  namespace: habito-web
+  labels:
+    app: habito-web
+    app.kubernetes.io/name: habito-web
+spec:
+  selector:
+    app: habito-web
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  type: ClusterIP
+
+---
+# ── Route: expone el servicio al exterior (HTTPS automático en OCP)
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: habito-web
+  namespace: habito-web
+  labels:
+    app: habito-web
+  annotations:
+    haproxy.router.openshift.io/timeout: 30s
+spec:
+  # Descomenta y edita si tienes dominio propio:
+  # host: habitoestilistes.com
+  to:
+    kind: Service
+    name: habito-web
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect   # HTTP → HTTPS automático
+  wildcardPolicy: None
